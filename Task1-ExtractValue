@@ -1,0 +1,24 @@
+#Extraxt the monetary value from the followingtext:
+#"O valor do produto, que é igual a R$1200,00, não pode ser considerado alto."
+
+texto = "O valor do produto, que é igual a R$1200,00 não pode ser considerado alto."
+valor = ""
+estado = 1
+
+for c in texto:
+    if estado == 1:
+        if c != "$":
+            estado = 1
+        elif c == "$":
+            estado = 2
+
+    elif estado == 2:
+        if c != " ":
+            valor = valor + c
+            estado = 2
+        elif c == " ":
+            #value with no espace between R$ and VALOR
+            print("R$" + valor)
+            #value with espace between R$ and VALOR
+            print("R$",valor)
+            break
