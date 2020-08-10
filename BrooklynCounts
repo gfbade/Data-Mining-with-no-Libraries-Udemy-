@@ -1,0 +1,17 @@
+arquivo = open("Airbnb_subset.csv", encoding = "utf-8", errors = "ignore")
+dados = arquivo.read()
+arquivo.close()
+
+distrito = ""
+totlocacoes = 0
+
+for c in dados:
+    if c != ",":
+        distrito = distrito + c
+    elif c == ",":
+        if distrito == "Brooklyn":
+            totlocacoes = totlocacoes + 1
+            distrito = ""
+        else:
+            distrito = ""
+print("O total de locações realizados no Brooklyn:",totlocacoes)
