@@ -3,38 +3,38 @@ arquivo = open("access.log", encoding = "utf-8", errors = "ignore")
 log = arquivo.read()
 arquivo.close()
 
-recursos = []
-item = ""
-estado = 1
+listarecursos = []
+recursoacessado = ""
+fasedaanalise = 1
 
-for c in log:
-    if estado == 1:
-        if c != "]":
-            estado = 1
+for varrelistarecursos in log:
+    if fasedaanalise == 1:
+        if varrelistarecursos != "]":
+            fasedaanalise = 1
         else:
-            estado = 2
-    elif estado == 2:
-        if c != " ":
-            estado = 2
+            fasedaanalise = 2
+    elif fasedaanalise == 2:
+        if varrelistarecursos != " ":
+            fasedaanalise = 2
         else:
-            estado = 3
-    elif estado == 3:
-        if c!= " ":
-            estado = 3
+            fasedaanalise = 3
+    elif fasedaanalise == 3:
+        if varrelistarecursos!= " ":
+            fasedaanalise = 3
         else:
-            estado = 4
-    elif estado == 4:
-        if c != " ":
-            item = item + c
-            estado = 4
+            fasedaanalise = 4
+    elif fasedaanalise == 4:
+        if varrelistarecursos != " ":
+            recursoacessado = recursoacessado + varrelistarecursos
+            fasedaanalise = 4
         else:
-            recursos.append(item)
-            item = ""
-            estado = 1
-print(recursos)
+            listarecursos.append(recursoacessado)
+            recursoacessado = ""
+            fasedaanalise = 1
+print(listarecursos)
 arq = open("recursos.txt", "w")
 
-for dado in recursos:
+for dado in listarecursos:
     arq.write(dado + "\n")
 
 arq.close()
