@@ -1,4 +1,4 @@
-#Extraxt the monetary value from the followingtext:
+#Extract the monetary value from the following text:
 #"O valor do produto, que é igual a R$1200,00, não pode ser considerado alto."
 
 texto = "O valor do produto, que é igual a R$1200,00 não pode ser considerado alto."
