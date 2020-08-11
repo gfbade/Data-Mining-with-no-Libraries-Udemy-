@@ -2,23 +2,23 @@
 #"O valor do produto, que é igual a R$1200,00, não pode ser considerado alto."
 
 texto = "O valor do produto, que é igual a R$1200,00 não pode ser considerado alto."
-valor = ""
+valormonetario = ""
 estado = 1
 
-for c in texto:
-    if estado == 1:
-        if c != "$":
-            estado = 1
-        elif c == "$":
-            estado = 2
+for varretexto in texto:
+    if fasedeanalise == 1:
+        if varretexto != "$":
+            fasedeanalise = 1
+        elif varretexto == "$":
+            fasedeanalise = 2
 
-    elif estado == 2:
-        if c != " ":
-            valor = valor + c
-            estado = 2
-        elif c == " ":
+    elif fasedeanalise == 2:
+        if varretexto != " ":
+            valormonetario = valor + c
+            fasedeanalise = 2
+        elif varretexto == " ":
             #value with no espace between R$ and VALOR
-            print("R$" + valor)
+            print("R$" + valormonetario)
             #value with espace between R$ and VALOR
-            print("R$",valor)
+            print("R$",valormonetario)
             break
