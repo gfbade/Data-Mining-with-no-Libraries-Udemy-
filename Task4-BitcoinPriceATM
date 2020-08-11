@@ -1,0 +1,24 @@
+#Scans the html code from coinmarketcap.com and print the bitcoin price at the moment.
+
+import requests
+
+html = requests.get("https://coinmarketcap.com/").text
+
+valordobitcoin = ""
+estadodaanalise = 1
+
+for varreduradohtml in html:
+    if estadodaanalise == 1: estadodaanalise = (1 if varreduradohtml != "t" else 2)
+    elif estadodaanalise == 2: estadodaanalise = (1 if varreduradohtml != "c" else 3)
+    elif estadodaanalise == 3: estadodaanalise = (1 if varreduradohtml != "o" else 4)
+    elif estadodaanalise == 4: estadodaanalise = (1 if varreduradohtml != "i" else 5)
+    elif estadodaanalise == 5: estadodaanalise = (1 if varreduradohtml != "n" else 6)
+    elif estadodaanalise == 6: estadodaanalise = (1 if varreduradohtml != "/" else 7)
+    elif estadodaanalise == 7: estadodaanalise = (1 if varreduradohtml != "m" else 8)
+    elif estadodaanalise == 8: estadodaanalise = (8 if varreduradohtml != "$" else 9)
+    elif estadodaanalise == 9:
+        if varreduradohtml != "<":
+            valordobitcoin = valordobitcoin + varreduradohtml
+        else:
+            print("$", valordobitcoin)
+            break
