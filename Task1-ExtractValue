@@ -3,7 +3,7 @@
 
 texto = "O valor do produto, que é igual a R$1200,00 não pode ser considerado alto."
 valormonetario = ""
-estado = 1
+fasedeanalise = 1
 
 for varretexto in texto:
     if fasedeanalise == 1:
@@ -14,7 +14,7 @@ for varretexto in texto:
 
     elif fasedeanalise == 2:
         if varretexto != " ":
-            valormonetario = valor + c
+            valormonetario = valormonetario + varretexto
             fasedeanalise = 2
         elif varretexto == " ":
             #value with no espace between R$ and VALOR
